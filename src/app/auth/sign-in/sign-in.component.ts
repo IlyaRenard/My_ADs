@@ -15,22 +15,9 @@ export class SignInComponent {
   password!: string;
 
   constructor(
-    public router: Router,
-    public auth: AngularFireAuth) {
+    public authService: AuthService) {
 
   }
 
-  signIn() {
-    console.log(this.email, this.password);
-
-    this.auth.signInWithEmailAndPassword(this.email, this.password)
-      .catch(error => console.log(error.code))
-      .then((res) => {
-        this.router.navigate(['home'])
-        console.log(res)
-      });
-
-
-  }
 
 }

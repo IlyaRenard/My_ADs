@@ -17,8 +17,13 @@ import { environment } from '../environments/environment';
 
 //Firebase
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { AdsComponent } from './ads/ads.component';
+import { AddAdsComponent } from './add-ads/add-ads.component';
 
 
 
@@ -29,13 +34,18 @@ import { FooterComponent } from './footer/footer.component';
     SignInComponent,
     SignUpComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AdsComponent,
+    AddAdsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
+    AngularFirestoreModule,
+    AngularFireDatabaseModule
   ],
 
   providers: [AuthService],

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -10,26 +11,9 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent {
 
-  email!: string;
-  password!: string;
-
-  constructor(
-    public router: Router,
-    public auth: AngularFireAuth) { }
-
-  signUp() {
-    this.auth.createUserWithEmailAndPassword(this.email, this.password)
-      .catch(error => console.log(error))
-      .then(
-        (res) => {
-          this.router.navigate(['home'])
-          console.log(res)
-          
-        }
-      );
+  constructor(public authService:AuthService) { }
 
 
-  }
 
 
 }
