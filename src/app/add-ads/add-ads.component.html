@@ -1,120 +1,109 @@
 <div class="form-control">
-  <h1 ngClass="h1-add">Add ads</h1>
+    <h1 ngClass="h1-add">Add ads</h1>
 
-  <div ngClass="div-ads" id="addPhoto">
-    <h3>Photo</h3>
-    <input type="file" ngClass="img-add" />
-  </div>
-
-  <div ngClass="div-ads" id="addTitle">
-    <h3>Title</h3>
-    <input type="text" />
-  </div>
-
-  <div ngClass="div-ads" id="selectCatefory">
-    <h3>Category</h3>
-    <select [(ngModel)]="selectedCategory">
-      <option>{{ category.realty }}</option>
-      <option>{{ category.computer }}</option>
-    </select>
-
-    <div *ngIf="selectedCategory === category.realty">
-      <h3>Type of Realty</h3>
-      <select [(ngModel)]="selectedTypeRealty">
-        <option>{{ typeRealty.flat }}</option>
-        <option>{{ typeRealty.house }}</option>
-        <option>{{ typeRealty.ground }}</option>
-        <option>{{ typeRealty.garage }}</option>
-        <option>{{ typeRealty.commercialRealty }}</option>
-      </select>
-
-      <div *ngIf="selectedTypeRealty">
-        <h3>Type deal</h3>
-        <p><input name="typeDeal" type="radio" /> Sell</p>
-        <p><input name="typeDeal" type="radio" /> Rent</p>
-      </div>
-      <div *ngIf="selectedTypeRealty === typeRealty.house">
-        <h3>Type of house</h3>
-        <p><input name="typeObj" type="radio" />House</p>
-        <p><input name="typeObj" type="radio" />Cottage</p>
-        <p><input name="typeObj" type="radio" />Country house</p>
-        <p><input name="typeObj" type="radio" />Townhouse</p>
-        <p><input name="typeObj" type="radio" />Other</p>
-      </div>
-      <div
-        *ngIf="
-          selectedTypeRealty === typeRealty.flat ||
-          selectedTypeRealty === typeRealty.house ||
-          selectedTypeRealty === typeRealty.commercialRealty">
-        <h3>Count rooms</h3>
-        <p><input name="countRoom" type="radio" /> 1</p>
-        <p><input name="countRoom" type="radio" /> 2</p>
-        <p><input name="countRoom" type="radio" /> 3</p>
-        <p><input name="countRoom" type="radio" /> 4</p>
-        <p><input name="countRoom" type="radio" /> 5 or more</p>
-      </div>
-      <div *ngIf="selectedTypeRealty === typeRealty.commercialRealty">
-        <h3>Type of commercial</h3>
-        <p><input name="typeComObj" type="radio" /> Office</p>
-        <p><input name="typeComObj" type="radio" /> Shops, commercial premises </p>
-        <p><input name="typeComObj" type="radio" /> Industrial premises</p>
-        <p><input name="typeComObj" type="radio" /> Storage</p>
-        <p><input name="typeComObj" type="radio" /> Other commercial</p>
-      </div>
-      <div
-        *ngIf="
-          selectedTypeRealty === typeRealty.house ||
-          selectedTypeRealty === typeRealty.ground">
-        <h3>Land area</h3>
-        <input type="number" />
-      </div>
-      <div *ngIf="selectedTypeRealty">
-        <h3>Total area</h3>
-        <input type="number" />
-      </div>
-      <div
-        *ngIf="
-          selectedTypeRealty === typeRealty.flat ||
-          selectedTypeRealty === typeRealty.house">
-        <h3>Living space</h3>
-        <input type="number" />
-      </div>
-      <div
-        *ngIf="
-          selectedTypeRealty === typeRealty.house ||
-          selectedTypeRealty === typeRealty.commercialRealty">
-        <h3>Floor</h3>
-        <input type="number" />
-      </div>
-      <div
-        *ngIf="
-          selectedTypeRealty === typeRealty.flat ||
-          selectedTypeRealty === typeRealty.house ||
-          selectedTypeRealty === typeRealty.commercialRealty">
-        <h3>Floors of the house</h3>
-        <input type="number" />
-      </div>
-      <div
-        *ngIf="
-          selectedTypeRealty === typeRealty.flat ||
-          selectedTypeRealty === typeRealty.house">
-        <h3>Years of construction</h3>
-        <input type="number" />
-      </div>
+    <div ngClass="div-ads" id="addPhoto">
+        <h3>Photo</h3>
+        <input type="file" ngClass="img-add" />
     </div>
-  </div>
 
-  <div ngClass="div-ads" id="addDiscription">
-    <h3>Description</h3>
-    <textarea name="description" cols="40" rows="10"></textarea>
-  </div>
+    <div ngClass="div-ads" id="addTitle" required>
+        <h3>Title</h3>
+        <input type="text" [(ngModel)]="ads.title" />
+    </div>
 
-  <div ngClass="div-ads" id="addPrice">
-    <h3>Price</h3>
-    <input type="number" />
-  </div>
+    <div ngClass="div-ads" id="selectCatefory">
+        <h3>Category</h3>
+        <select [(ngModel)]="selectedCategory">
+            <option>{{ category.realty }}</option>
+            <option>{{ category.computer }}</option>
+        </select>
 
-  <div ngClass="div-ads" id="addButton">
-    <button ngClass="button-add" (click)="add()">Add</button>
-  </div>
+        <div *ngIf="selectedCategory === category.realty">
+            <h3>Type of Realty</h3>
+            <select [(ngModel)]="selectedTypeRealty">
+                <option>{{ typeRealty.flat }}</option>
+                <option>{{ typeRealty.house }}</option>
+                <option>{{ typeRealty.ground }}</option>
+                <option>{{ typeRealty.garage }}</option>
+                <option>{{ typeRealty.commercialRealty }}</option>
+            </select>
+
+            <div *ngIf="selectedTypeRealty">
+                <h3>Type deal</h3>
+                <p><input name="typeDeal" type="radio" /> Sell</p>
+                <p><input name="typeDeal" type="radio" /> Rent</p>
+            </div>
+            <div *ngIf="selectedTypeRealty === typeRealty.house">
+                <h3>Type of house</h3>
+                <p><input name="typeObj" type="radio" />House</p>
+                <p><input name="typeObj" type="radio" />Cottage</p>
+                <p><input name="typeObj" type="radio" />Country house</p>
+                <p><input name="typeObj" type="radio" />Townhouse</p>
+                <p><input name="typeObj" type="radio" />Other</p>
+            </div>
+            <div *ngIf="selectedTypeRealty === typeRealty.flat ||
+                        selectedTypeRealty === typeRealty.house ||
+                        selectedTypeRealty === typeRealty.commercialRealty">
+                <h3>Count rooms</h3>
+                <p><input name="countRoom" type="radio" /> 1</p>
+                <p><input name="countRoom" type="radio" /> 2</p>
+                <p><input name="countRoom" type="radio" /> 3</p>
+                <p><input name="countRoom" type="radio" /> 4</p>
+                <p><input name="countRoom" type="radio" /> 5 or more</p>
+            </div>
+            <div *ngIf="selectedTypeRealty === typeRealty.commercialRealty">
+                <h3>Type of commercial</h3>
+                <p><input name="typeComObj" type="radio" /> Office</p>
+                <p><input name="typeComObj" type="radio" /> Shops, commercial premises </p>
+                <p><input name="typeComObj" type="radio" /> Industrial premises</p>
+                <p><input name="typeComObj" type="radio" /> Storage</p>
+                <p><input name="typeComObj" type="radio" /> Other commercial</p>
+            </div>
+            <div *ngIf="selectedTypeRealty === typeRealty.house ||
+                        selectedTypeRealty === typeRealty.ground">
+                <h3>Land area</h3>
+                <input type="number" />
+            </div>
+            <div *ngIf="selectedTypeRealty">
+                <h3>Total area</h3>
+                <input type="number" />
+            </div>
+            <div *ngIf="selectedTypeRealty === typeRealty.flat ||
+                        selectedTypeRealty === typeRealty.house">
+                <h3>Living space</h3>
+                <input type="number" />
+            </div>
+            <div *ngIf="selectedTypeRealty === typeRealty.flat ||
+                        selectedTypeRealty === typeRealty.house ||
+                        selectedTypeRealty === typeRealty.commercialRealty">
+                <h3>Floor</h3>
+                <input type="number" />
+            </div>
+            <div *ngIf="selectedTypeRealty === typeRealty.flat ||
+                        selectedTypeRealty === typeRealty.house ||
+                        selectedTypeRealty === typeRealty.commercialRealty">
+                <h3>Floors of the house</h3>
+                <input type="number" />
+            </div>
+            <div *ngIf="selectedTypeRealty === typeRealty.flat || 
+                        selectedTypeRealty === typeRealty.house">
+                <h3>Years of construction</h3>
+                <input type="number" />
+            </div>
+        </div>
+    </div>
+
+    <div ngClass="div-ads" id="addDiscription" required>
+        <h3>Description</h3>
+        <textarea name="description" cols="40" rows="10" [(ngModel)]="ads.description"></textarea>
+    </div>
+
+    <div ngClass="div-ads" id="addPrice" required>
+        <h3>Price</h3>
+        <input type="number" [(ngModel)]="ads.price" />
+    </div>
+
+    <div ngClass="div-ads" id="addButton">
+        <button ngClass="button-add" (click)="saveAds()">Add</button>
+    </div>
 </div>

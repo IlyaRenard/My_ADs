@@ -1,0 +1,40 @@
+<div *ngIf="authService.userData as user">
+    <div *ngIf="!updateProfile">
+        <img src="{{(user.photoURL) ? user.photoURL : '/assets/userProfile.png'}}" alt="{{ user.displayName }}" />
+        <div>
+            <h1>
+                Hello:
+                <strong>{{ currentUser1?.displayName ? currentUser1?.displayName : "User"}}</strong>
+            </h1>
+            <p>
+                User ID: <strong>{{ user.uid }}</strong>
+            </p>
+            <p>
+                Email: <strong>{{ user.email }}</strong>
+            </p>
+            <p>
+                Phone: <strong>{{currentUser1?.phoneNumber }}</strong>
+            </p>
+
+        </div>
+    </div>
+    <div *ngIf="updateProfile">
+        <h1>Edit Profile</h1>
+        <div>
+            <p>
+                User name <input type="text" [(ngModel)]="curUser.displayName" />
+            </p>
+            <p>
+                Phone: <input type="text" [(ngModel)]="curUser.phoneNumber">
+            </p>
+            <button (click)="updateUser()">Save</button>
+        </div>
+    </div>
+    <div>
+        <button ngClass="editBtn" (click)="editProfile()"></button>
+    </div>
+    <div>
+        <button class="btn btn-dark" (click)="authService.SignOut()">Log Out</button>
+    </div>
+
+</div>
