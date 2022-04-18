@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Ads } from '../models/ads';
 import { AdsService } from '../services/ads.service';
@@ -13,8 +14,15 @@ export class AddAdsComponent implements OnInit {
 
   ads: Ads = new Ads();
   selectedCategory!: string;
-  selectedTypeRealty!:string;
-  constructor(private adsService: AdsService, private authService:AuthService) { }
+  selectedTypeRealty!: string;
+  constructor(
+    private adsService: AdsService,
+    private authService: AuthService,
+    private datepipe: DatePipe
+  ) {
+    const currentDate = this.datepipe.transform((new Date), 'MM/dd/yyyy h:mm:ss');
+    this.ads.date = currentDate || undefined ;
+  }
   ngOnInit(): void {
   }
 
@@ -24,23 +32,24 @@ export class AddAdsComponent implements OnInit {
     computer: 'Computer',
   };
 
-  typeRealty:any = {
-    flat:"Flat",
-    house:"House",
-    ground:"Ground",
-    garage:"Garage",
-    commercialRealty:"Commercial realty"
+  typeRealty: any = {
+    flat: "Flat",
+    house: "House",
+    ground: "Ground",
+    garage: "Garage",
+    commercialRealty: "Commercial realty"
   }
 
   
+
   saveAds(): void {
-    this.adsService.create(this.ads,this.authService.userData.uid).then(() => {
+    this.adsService.create(this.ads, this.authService.userData.uid).then(() => {
       console.log('Created new item successfully!');
 
-     
+
     });
   }
-  
+
 
 
 }

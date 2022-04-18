@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
   } */
 
   getData(){
-    this.authService.userRef.doc(this.authService.userData.uid).valueChanges().subscribe((response) => {
+    this.authService.userRef.doc(this.authService.userData?.uid).valueChanges().subscribe((response) => {
       this.currentUser1 = response;
   });
   }

@@ -2,13 +2,13 @@
     <nav ngClass="nav-bar">
         <a routerLink="/">Home </a>
 
-        <a *ngIf="authService.userData" routerLink="/add-ads">Add</a>
+        <a *ngIf="this.authService.userData" routerLink="/add-ads">Add</a>
 
-        <a *ngIf="!authService.userData" routerLink="/sign-up">Sing Up </a>
+        <a *ngIf="!this.authService.userData" routerLink="/sign-up">Sing Up </a>
 
-        <a *ngIf="!authService.userData" routerLink="/sign-in">Sign In</a>
+        <a *ngIf="!this.authService.userData" routerLink="/sign-in">Sign In</a>
 
-        <a *ngIf="authService.userData" routerLink="/profile">Profile</a>
+        <a *ngIf="this.authService.userData" routerLink="/profile">Profile</a>
 
 
     </nav>
